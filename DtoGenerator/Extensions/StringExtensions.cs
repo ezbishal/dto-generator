@@ -1,4 +1,4 @@
-﻿namespace DtoGenerator.Extension;
+﻿namespace DtoGenerator.Extensions;
 
 public static class StringExtensionMethods
 {
