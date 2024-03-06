@@ -1,5 +1,10 @@
-﻿using DtoGenerator.Attributes;
+using DtoGenerator.Attributes;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Text;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 
@@ -128,7 +133,7 @@ public class DtoGenerator : IIncrementalGenerator
         {
             SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Dynamic")),
             SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Collections")),
-            SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("Interactive.Shared.CustomerModels"))
+            SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("Shared.Models"))
         };
 
         usings.AddRange(namespaces.Select(nd => SyntaxFactory.UsingDirective(SyntaxFactory.ParseName(nd.Name.ToString()))));
@@ -152,7 +157,7 @@ public class DtoGenerator : IIncrementalGenerator
             classDeclaration = classDeclaration.AddMembers(propertyDeclaration);
         }
 
-        var namespaceDeclaration = SyntaxFactory.NamespaceDeclaration(SyntaxFactory.ParseName("Interactive.Shared.CustomerModels"))
+        var namespaceDeclaration = SyntaxFactory.NamespaceDeclaration(SyntaxFactory.ParseName("Shared.Models"))
             .AddMembers(classDeclaration);
 
         var compilationUnit = SyntaxFactory.CompilationUnit()
