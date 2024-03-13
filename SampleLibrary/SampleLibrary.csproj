@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\DtoGenerator\DtoGenerator.csproj" OutputItemType="Analyzer"/>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>Generated\</CompilerGeneratedFilesOutputPath>
+  </PropertyGroup>
+</Project>
